@@ -1,3 +1,5 @@
+include .env.dev
+
 .PHONY: help
 .DEFAULT_GOAL := help
 
@@ -24,9 +26,11 @@ stop:		   ## 🔪 To stop the container
 ##
 ##💻 Run the database
 ##
-
 run-database:	## 💾 Run the Postgresql database inside Docker container
 	@docker-compose up database
 
 stop-database:	## 🔪 Stop Postgresql Docker container
 	@docker-compose down database
+
+sonar-scanner:
+	@sonar-scanner  -Dsonar.host.url=${SONAR_URL} -Dsonar.login=${SONAR_TOKEN} -Dsonar.projectKey=${SONAR_PROJECT_KEY}
