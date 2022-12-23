@@ -1,0 +1,33 @@
+version: "3.5"
+
+services:
+  flask-server:
+    image: flask
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+      - 10001:10001
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=run.py
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=database
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=walkyheroes
+    volumes:
+      - .:/flask_starterkit:cached
+
+  database:
+    container_name: postgres
+    image: postgres:latest
+    env_file: database.conf
+    ports:
+      - 5432:5432
+    volumes:
+      - db_volume:/var/lib/postgresql
+
+volumes:
+  db_volume:
