@@ -1,4 +1,4 @@
-# flask-postgresql-docker-starterkit
+# 🐳 flask-postgresql-docker-starterkit
 
 Minimal application providing all boilerplate code required to start basic Flask project's in Python
 
@@ -19,6 +19,7 @@ To run the project in the same terminal run the following command
 ```
 
 Application will be available on this URI: `http://127.0.0.1:5000`
+
 ### 🔪 Kill the project
 
 Open a terminal and type the following command :
